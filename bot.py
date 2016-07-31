@@ -28,8 +28,10 @@ RE = '((\.r)(\s)*'+exp+')$'
 @bot.message_handler(regexp=RE)
 def calculate_dice(message):
 	line = re.search(RE, message.text).group()
+	print line
 	result = reg_exp.parse_command(line)
-	bot.reply_to(message, result)
+	print result
+	bot.send_message(message.chat.id, result)
 
 def pull_bot():
 	bot.polling()
